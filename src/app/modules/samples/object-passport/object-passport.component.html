@@ -1,0 +1,99 @@
+<mat-card [formGroup]="form">
+  <header>
+    <ng-container *ngIf="objectPassport; else newObjectPassportTemplate;">
+      Редактирование папорта объекта
+    </ng-container>
+    <ng-template #newObjectPassportTemplate>
+      Новый паспорт объекта
+    </ng-template>
+  </header>
+  <section>
+    <div class="field">
+      <mat-form-field class="mat-form-field-full-width">
+        <input
+            formControlName="code"
+            matInput
+            placeholder="Шифр объекта:"
+            type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="field">
+      <mat-form-field class="mat-form-field-full-width">
+        <input
+            formControlName="name"
+            matInput
+            placeholder="Объект:"
+            type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="field">
+      <mat-form-field class="mat-form-field-full-width">
+        <input
+            formControlName="commander"
+            matInput
+            placeholder="Командир (начальник):"
+            type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="field">
+      <mat-form-field class="mat-form-field-full-width">
+        <input
+            formControlName="deputy"
+            matInput
+            placeholder="Зам. по тылу (МТО):"
+            type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="field">
+      <mat-form-field class="mat-form-field-full-width">
+        <input
+            formControlName="paramedic"
+            matInput
+            placeholder="НМС (фельдшер):"
+            type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="field">
+      <mat-form-field class="mat-form-field-full-width">
+        <input
+            formControlName="phone"
+            matInput
+            placeholder="Контактный телефон:"
+            type="text"
+        />
+      </mat-form-field>
+    </div>
+
+  </section>
+
+  <footer>
+    <button
+        color="primary"
+        mat-button
+        (click)="cancel.emit()"
+    >
+      Отмена
+    </button>
+
+    <button
+        color="primary"
+        mat-raised-button
+        [disabled]="form.invalid"
+        (click)="apply()"
+    >
+      Сохранить
+    </button>
+  </footer>
+</mat-card>
+
+<dc-loader-with-backdrop *ngIf="loading"></dc-loader-with-backdrop>

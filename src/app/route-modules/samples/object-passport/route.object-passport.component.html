@@ -1,0 +1,47 @@
+<ng-container *ngIf="objectPassport; else loaderTemplate;">
+  <header>
+   <div class="title">
+    <h3>
+      Паспорт объекта: "{{ objectPassport!.name }} ({{ objectPassport!.code }})"
+    </h3>
+   </div>
+   <div class="actions">
+    <button
+        mat-raised-button
+        (click)="editObjectPassport()"
+    >
+      Редактировать паспорт объекта
+    </button>
+
+    <button
+        mat-raised-button
+        [disabled]="!objectPassport"
+        (click)="addSample()"
+    >
+      Добавить пробу
+    </button>
+   </div>
+  </header>
+
+  <section>
+    <dc-object-samples [objectPassportId]="objectPassport.id">
+      <ng-template
+          #actions
+          let-objectSample="objectSample"
+      >
+        <a
+            mat-raised-button
+            color="primary"
+            (click)="updateSample(objectSample)"
+        >
+          редактировать
+        </a>
+      </ng-template>
+    </dc-object-samples>
+  </section>
+</ng-container>
+
+<ng-template #loaderTemplate>
+  <dc-loader-with-backdrop></dc-loader-with-backdrop>
+</ng-template>
+

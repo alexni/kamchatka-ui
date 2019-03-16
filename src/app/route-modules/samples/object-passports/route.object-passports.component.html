@@ -1,0 +1,26 @@
+<header>
+  <button
+      mat-raised-button
+      (click)="createObjectPassport()"
+  >
+    Создать паспорт объекта
+  </button>
+</header>
+
+<section>
+  <dc-object-passports>
+    <ng-template
+        #actions
+        let-objectPassport="objectPassport"
+    >
+      <a
+          [routerLink]="'object-passport/' + objectPassport.id"
+          mat-raised-button
+          color="primary"
+      >
+        открыть
+      </a>
+    </ng-template>
+  </dc-object-passports>
+
+</section>

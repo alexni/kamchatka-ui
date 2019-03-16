@@ -1,0 +1,35 @@
+@import '../../../ui/common/styles/colors';
+
+mat-card {
+  width: 600px;
+
+  header {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    height: 39px;
+    border-bottom: 1px solid $border-color;
+  }
+
+  section {
+    .field {
+      margin: 15px 0;
+    }
+  }
+
+  footer {
+    display: flex;
+    height: 47px;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid $border-color;
+
+    button {
+      margin-right: 15px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

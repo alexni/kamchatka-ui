@@ -1,0 +1,19 @@
+<mat-form-field class="mat-form-field-full-width">
+  <input
+      [formControl]="control"
+      [placeholder]="placeholder"
+      [owlDateTime]="dateTime"
+      readonly
+      matInput
+      type="text"
+  />
+  <mat-icon
+      matSuffix
+      [owlDateTimeTrigger]="dateTime"
+  >calendar_today</mat-icon>
+</mat-form-field>
+
+<owl-date-time
+    #dateTime
+    [showSecondsTimer]="true"
+></owl-date-time>

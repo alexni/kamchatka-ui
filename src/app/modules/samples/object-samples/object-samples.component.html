@@ -1,0 +1,18 @@
+<dc-table-with-paginator
+    *ngIf="paginatorSource"
+    [columns]="COLUMNS"
+    [dataSource]="paginatorSource"
+>
+  <ng-container *ngIf="actionsTemplate">
+    <ng-template
+        #actions
+        let-item="item"
+    >
+      <ng-container
+          [ngTemplateOutlet]="actionsTemplate"
+          [ngTemplateOutletContext]="{ objectSample: item }"
+      ></ng-container>
+    </ng-template>
+  </ng-container>
+
+</dc-table-with-paginator>

@@ -1,0 +1,116 @@
+Запросы:
+
+REQUEST GET /object/passports?offset=${offset}&number=${number}
+RESPONSE ObjectPassportsList
+
+-----
+
+REQUEST GET /object/passport/${object_passport_id}
+RESPONSE ObjectPassport
+
+-----
+
+REQUEST POST /object/passport
+        BODY {
+          code: string | null;
+          name: string | null;
+          commander: string | null;
+          deputy: string | null;
+          paramedic: string | null;
+          phone: string | null;
+        }
+RESPONSE { id: string }
+
+-----
+
+REQUEST PUT /object/passport
+        BODY {
+          id: string;
+        }
+RESPONSE void
+
+-----
+
+REQUEST GET /object/passport/${object_passport_id}/samples?offset=${offset}&number=${number}
+RESPONSE ObjectSamplesList
+
+-----
+
+REQUEST POST /object/passport/${object_passport_id}/sample
+        BODY {
+          code: string | null;
+          name: string | null;
+          date_time_of_receipt: string | null; // в формате YYYY-MM-DD HH:mm:ss
+          date_time_of_sampling: string | null; // в формате YYYY-MM-DD HH:mm:ss
+          target: string | null;
+          place: string | null;
+          value: string | null;
+        }
+RESPONSE { id: string }
+
+-----
+
+REQUEST PUT /object/passport/${object_passport_id}/sample/${sample_id}
+        BODY {
+          code: string | null;
+          name: string | null;
+          date_time_of_receipt: string | null; // в формате YYYY-MM-DD HH:mm:ss
+          date_time_of_sampling: string | null; // в формате YYYY-MM-DD HH:mm:ss
+          target: string | null;
+          place: string | null;
+          value: string | null;
+        }
+RESPONSE void
+
+-----
+
+REQUEST GET /reports/samples?year=${year}
+RESPONSE SamplesReport
+
+
+
+
+Сущности:
+
+interface ObjectPassport {
+  id: string;
+  code: string | null;
+  name: string | null;
+  commander: string | null;
+  deputy: string | null;
+  paramedic: string | null;
+  phone: string | null;
+}
+
+interface ObjectPassportsList {
+  items: ObjectPassport[];
+  total: number;
+}
+
+ObjectSample {
+  id: string;
+  object_passport_id: string;
+  code: string | null;
+  name: string | null;
+  date_time_of_receipt: string | null; // в формате YYYY-MM-DD HH:mm:ss
+  date_time_of_sampling: string | null; // в формате YYYY-MM-DD HH:mm:ss
+  target: string | null;
+  place: string | null;
+  value: string | null;
+}
+
+interface ObjectSamplesList {
+  items: ObjectSample[];
+  total: number;
+}
+
+interface SampleReportItem {
+  object_code: string;
+  object_name: string;
+  object_place: string;
+  dates: string[];
+}
+
+interface SamplesReport {
+  items: SampleReportItem[];
+}

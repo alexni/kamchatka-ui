@@ -1,0 +1,49 @@
+<section
+    class="filters"
+    [formGroup]="filtersForm"
+>
+  <div class="field">
+    <mat-form-field class="mat-form-field-full-width">
+      <input
+          formControlName="year"
+          matInput
+          placeholder="Отчетный год:"
+          type="text"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="field">
+    <button
+        mat-raised-button
+        [disabled]="filtersForm.invalid"
+        (click)="loadReport()"
+    >
+      Сгенерировать отчет
+    </button>
+  </div>
+</section>
+
+<section class="table">
+  <dc-table
+      *ngIf="columns"
+      [columns]="columns"
+      [items]="items"
+  ></dc-table>
+</section>
+
+<ng-template
+    #monthDatesTemplate
+    let-item="item"
+>
+  <div class="dates">
+    <div *ngIf="!item">
+      -
+    </div>
+    <div *ngFor="let date of item">
+      {{ date }}
+    </div>
+  </div>
+</ng-template>
+
+<dc-loader-with-backdrop *ngIf="loading"></dc-loader-with-backdrop>
