@@ -71,12 +71,13 @@ export class SamplesReportComponent implements OnInit, OnDestroy {
   }
 
   public loadReport(): void {
+    const sampleCode = this.filtersForm.get('sampleCode')!.value as string;
     const year = this.filtersForm.get('year')!.value as number;
 
     this.loadReportsUnsubscribe();
     this.setLoading(true);
     this.loadReportSubscription = this.samplesService
-      .loadSamplesReport(year)
+      .loadSamplesReport(sampleCode, year)
       .pipe(
         finalize(() => this.setLoading(false)),
       )
@@ -89,6 +90,7 @@ export class SamplesReportComponent implements OnInit, OnDestroy {
 
   private createFiltersForm(): void {
     this.filtersForm = this.formBuilder.group({
+      sampleCode: [null, [Validators.required]],
       year: [null, [Validators.required]],
     });
 

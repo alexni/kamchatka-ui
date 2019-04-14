@@ -120,7 +120,7 @@ export class SamplesService {
       );
   }
 
-  public loadSamplesReport(year: number): Observable<SamplesReport> {
+  public loadSamplesReport(sampleCoe:string, year: number): Observable<SamplesReport> {
     return of(mockSamplesReport())
       .pipe(
         delay(1000),

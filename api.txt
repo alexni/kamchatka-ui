@@ -64,7 +64,7 @@ RESPONSE void
 
 -----
 
-REQUEST GET /reports/samples?year=${year}
+REQUEST GET /reports/samples?sampleCode=${sample_code}&year=${year}
 RESPONSE SamplesReport
 
 
