@@ -4,8 +4,6 @@ import { MAT_DATE_LOCALE, MatButtonModule, MatIconModule, MatMenuModule, MatTool
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { AngularSplitModule } from 'angular-split';
-import { ContextMenuModule } from 'ngx-contextmenu';
 import { API_URL_GATEWAY } from 'src/app/api-service.config';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { UsersModule } from 'src/app/modules/users/users.module';
@@ -23,8 +21,6 @@ import { HeaderComponent } from './root-components/header/header.component';
     MatButtonModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularSplitModule.forRoot(),
-    ContextMenuModule.forRoot(),
     MatMenuModule,
     UsersModule,
     RouterModule,
